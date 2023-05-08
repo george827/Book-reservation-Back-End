@@ -13,7 +13,7 @@ class Api::V1::ReservationsController < ApplicationController
     if @reservation.save
       render json: @reservation, status: :created
     else
-      render json: {errors: @reservation.errors}, status: :unprocessable_entity
+      render json: { errors: @reservation.errors }, status: :unprocessable_entity
     end
   end
 
@@ -22,14 +22,14 @@ class Api::V1::ReservationsController < ApplicationController
     if @reservation.update(reservation_params)
       render json: @reservation, status: :ok
     else
-      render json: {errors: @reservation.errors}, status: :unprocessable_entity
+      render json: { errors: @reservation.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
     @reservation = current_user.Reservation.find(params[:id])
     @reservation.destroy
-    render json: {message: "Reservation cancelled"}, status: :ok
+    render json: { message: 'Reservation cancelled' }, status: :ok
   end
 
   private

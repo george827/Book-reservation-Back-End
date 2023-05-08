@@ -14,7 +14,7 @@ class Api::V1::RestaurantTablesController < ApplicationController
     if @restaurant_table.save
       render json: @restaurant_table, status: :created
     else
-      render json: {errors: @restaurant_table.errors}, status: :unprocessable_entity
+      render json: { errors: @restaurant_table.errors }, status: :unprocessable_entity
     end
   end
 
@@ -23,14 +23,14 @@ class Api::V1::RestaurantTablesController < ApplicationController
     if @restaurant_table.update(restaurant_table_params)
       render json: @restaurant_table, status: :ok
     else
-      render json: {errors: @restaurant_table.errors}, status: :unprocessable_entity
+      render json: { errors: @restaurant_table.errors }, status: :unprocessable_entity
     end
   end
-  
+
   def destroy
     @restaurant_table = RestaurantTable.find(params[:id])
     @restaurant_table.destroy
-    render json: {message: "Restaurant table deleted"}, status: :ok
+    render json: { message: 'Restaurant table deleted' }, status: :ok
   end
 
   private
