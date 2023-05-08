@@ -1,8 +1,8 @@
 class Reservation < ApplicationRecord
-    belongs_to :user
-    belongs_to :restaurant_table
+  belongs_to :user
+  belongs_to :restaurant_table
 
-    validates :city, presence: true
-    validates :start_date, presence: true
-    validates :end_date, presence: true
+  validates :city, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 end
