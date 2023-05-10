@@ -23,7 +23,7 @@ class Api::V1::ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    render json: "Reservation was cancelled successfully", status: :ok
+    render json: 'Reservation was cancelled successfully', status: :ok
   end
 
   private
