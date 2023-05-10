@@ -1,7 +1,7 @@
 class Api::V1::RestaurantTablesController < ApplicationController
   def index
     @restaurant_tables = RestaurantTable.all
-    render json: RestaurantTable.all, status: :ok
+    render json: @restaurant_tables, status: :ok
   end
 
   def show
