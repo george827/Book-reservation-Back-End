@@ -1,40 +1,34 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    render json: current_user.Reservation.all, status: :ok
+    @reservations = Reservation.where(user_id: params[:user_id])
+    render json: @reservations, status: :ok
   end
 
   def show
-    @reservation = current_user.Reservation.find(params[:id])
+    @reservation = Reservation.find(params[:id])
     render json: @reservation, status: :ok
   end
 
   def create
-    @reservation = current_user.Reservation.new(reservation_params)
+    @reservation = Reservation.new(reservation_params)
+    @reservation.user = User.find(params[:user_id])
+    @reservation.restaurant_table = RestaurantTable.find(params[:table_id])
     if @reservation.save
       render json: @reservation, status: :created
     else
-      render json: { errors: @reservation.errors }, status: :unprocessable_entity
-    end
-  end
-
-  def update
-    @reservation = current_user.Reservation.find(params[:id])
-    if @reservation.update(reservation_params)
-      render json: @reservation, status: :ok
-    else
-      render json: { errors: @reservation.errors }, status: :unprocessable_entity
+      render json: @reservation.errors.full_messages.join(', '), status: :unprocessable_entity
     end
   end
 
   def destroy
-    @reservation = current_user.Reservation.find(params[:id])
+    @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    render json: { message: 'Reservation cancelled' }, status: :ok
+    render json: 'Reservation was cancelled successfully', status: :ok
   end
 
   private
 
   def reservation_params
-    params.require(:reservation).permit(:city, :start_date, :end_date, :restaurant_table_id)
+    params.require(:reservation).permit(:user, :table_name, :city, :start_date, :end_date, :user_id, :table_id)
   end
 end
