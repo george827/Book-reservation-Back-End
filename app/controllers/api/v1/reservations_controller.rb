@@ -1,6 +1,6 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.where(user_id: params[:user_id])
+    @reservations = Reservation.includes(:restaurant_table).all
     render json: @reservations, status: :ok
   end
 
