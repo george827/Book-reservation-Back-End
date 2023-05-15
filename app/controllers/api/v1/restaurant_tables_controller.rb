@@ -1,5 +1,5 @@
 class Api::V1::RestaurantTablesController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
+  skip_before_action :verify_authenticity_token, only: %i[create update destroy]
   def index
     @restaurant_tables = RestaurantTable.all
     render json: @restaurant_tables, status: :ok
