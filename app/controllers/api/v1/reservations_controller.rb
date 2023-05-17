@@ -1,7 +1,7 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
     @reservations = Reservation.includes(:restaurant_table).all
-    render json: @reservations, status: :ok
+    render json: @reservations, include: [:restaurant_table], status: :ok
   end
 
   def show
