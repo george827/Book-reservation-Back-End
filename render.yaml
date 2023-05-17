@@ -1,0 +1,18 @@
+databases:
+  - name: final_capstone
+    databaseName: capstone_db_x49s
+    user: micronauts
+
+services:
+  - type: web
+    name: book-a-table
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: capstone_db_x49s
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
