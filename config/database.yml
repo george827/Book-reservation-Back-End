@@ -25,7 +25,7 @@ default: &default
   host: localhost
   username: postgres
   # password: 5476
-  password: wilsona7
+  password: coding@1
 
 development:
   <<: *default
