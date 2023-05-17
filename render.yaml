@@ -1,0 +1,18 @@
+databases:
+  - name: wilson_psql
+    databaseName: wilson_db
+    user: wilson
+
+services:
+  - type: web
+    name: reserve-a-table
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wilson_db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
