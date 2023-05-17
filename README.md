@@ -74,7 +74,7 @@
 
 ### API Documentation <a name="api-documentation"></a>
 
-- Check [swagger documentation](link here)
+- Check [swagger documentation](https://book-a-table.onrender.com/api-docs)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
