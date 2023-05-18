@@ -4,9 +4,9 @@ RSpec.describe 'RestraurantTable', type: :request do
   describe 'GET /index' do
     before(:example) do
       @user = User.create(name: 'Dev')
-      @restaurant_table = RestaurantTable.create(image: 'photo', name: 'Table6', desc: '15/05/2023', price: '$16',
+      @restaurant_table = RestaurantTable.create(image: 'photo', name: 'Table6', desc: 'my description', price: 16,
                                                  table_size: 6)
-      @reservation = Reservation.create(user_id: @user.id, restaurant_table_id: 3, city: 'Agra',
+      @reservation = Reservation.create(user: @user, restaurant_table_id: 3, city: 'Agra',
                                         start_date: '15/05/2023', end_date: '16/05/2023', table_name: 'Table6')
       get api_v1_restaurant_tables_path(@user)
     end
@@ -25,7 +25,7 @@ RSpec.describe 'RestraurantTable', type: :request do
   describe 'GET /show' do
     before(:example) do
       @user = User.create(name: 'Dev')
-      @restaurant_table = RestaurantTable.create(image: 'photo', name: 'Table6', desc: '15/05/2023', price: '$16',
+      @restaurant_table = RestaurantTable.create(image: 'photo', name: 'Table6', desc: 'my description', price: 16,
                                                  table_size: 6)
       @reservation = Reservation.create(user: @user, city: 'Agra', start_date: '15/05/2023',
                                         end_date: '16/05/2023', table_name: 'Table6')
