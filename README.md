@@ -70,6 +70,9 @@
 
 - [Link to kanBan Board](https://github.com/users/george827/projects/8)
 
+### Initial state
+![image](https://user-images.githubusercontent.com/61289730/236206465-62bfe6e2-80bf-4355-a30c-fd4aa1cbd917.PNG)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### API Documentation <a name="api-documentation"></a>
